@@ -20,7 +20,7 @@ int main(void)
 			i /= 10;
 			if (i == 0)
 			{
-				if ((n % 11) != 0 && n != 11)
+				if (n % 11 != 0 && n != 11)
 				{
 					putchar((n / 10) + '0');
 					putchar((n % 10) + '0');
