@@ -4,37 +4,37 @@
  *  * main - Program entry point
  *    * Return: 0 on success. Error code otherwise
  *    **/
-
 int main(void)
-{
-	int n = 0;
-	int i;
 
-	while (n <= 99)
-	{
-		i = n;
-		while (i < 99)
-		{
-			if (i / 10 % 10 > i % 10)
-				break;
-			i /= 10;
-			if (i == 0)
-			{
-				if (n % 11 != 0 && n != 11)
-				{
-					putchar((n / 10) + '0');
-					putchar((n % 10) + '0');
-					if (n < 89)
-					{
-						putchar(',');
-						putchar(' ');
-					}
-				}
-				break;
-			}
-		}
-		n++;
-	}
-	putchar('\n');
-	return (0);
+{
+int x, y, z;
+
+for (x = 48; x <= 57; x++)
+{
+for (y = 48; y <= 57; y++)
+{
+for (z = 48; z <= 57; z++)
+{
+if (x == y || x == z || y == z || y <= x || z <= y)
+{
+}
+else
+{
+putchar(x);
+putchar(y);
+putchar(z);
+if (x == 55 && y == 56 && z == 57)
+{
+}
+else
+{
+putchar(44);
+putchar(' ');
+}
+}
+}
+}
+}
+putchar('\n');
+return (0);
 }
