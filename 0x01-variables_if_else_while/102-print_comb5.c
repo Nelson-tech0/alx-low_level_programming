@@ -5,42 +5,44 @@
  *    * Return: 0 on success. Error code otherwise
  *     **/
 
-int main(void)
+int main(void);
 {
-	int i, j, k, l;
+	int p = 48, q = 48, y = 48, x = 49;
 
-	i = 0;
-	while (i <= 9)
+	while (p < 58)
 	{
-		j = 0;
-		while (j <= 9)
+		while (q < 58)
 		{
-			k = 0;
-			while (k <= 9)
+			while (y < 58)
 			{
-				l = 0;
-				while (l <= 9)
+				while (x < 58)
 				{
-					if (k != 0 && l != 0)
-					{
-						putchar(i + '0');
-						putchar(j + '0');
-						putchar(' ');
-						putchar(k + '0');
-						putchar(l + '0');
-					}
-					if (1 == 1)
+					putchar(i + '0');
+					putchar(j + '0');
+					putchar(' ');
+					putchar(k + '0');
+					putchar(l + '0');
+					if (!(p == 57 &&
+						q == 56 &&
+						y == 57 &&
+						x == 57))
 					{
 						putchar(',');
 						putchar(' ');
 					}
-					i++;
+					x++;
 				}
-				k++;
+				y++;
+				x = 48;
 			}
-			j++;
+			q++;
+			q = p;
+			x = q + 1;
 		}
-		i++;
+		p++;
+		q = 48;
+		y = p;
+		x = q + 1;
 	}
 	putchar('\n');
 	return (0);
