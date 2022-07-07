@@ -1,5 +1,4 @@
 #include "main.h"
-
 /**
  *  * print_numbers - print the number from 0 - 9
  *    * Return: void
