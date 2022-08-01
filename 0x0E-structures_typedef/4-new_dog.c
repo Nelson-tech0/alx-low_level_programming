@@ -1,66 +1,47 @@
 #include <stdlib.h>
 #include "dog.h"
 
-int _strLen(char *str);
-void fillMem(char *str, int strLen, char *dest);
-
 /**
- * new_dog - Creates a new dog
+ * new_dog - creates a new dog
+ * @name: name of dog
+ * @age: age of dog
+ * @owner: owner of dog
  *
- * @name: Name of dog
- *
- * @age: Age of dog
- *
- * @owner: Owner of dog
- *
- * Return: Pointer to the newly created dog (SUCCESS) or
- * NULL if insufficient memory was available (FAILURE)
+ * Return: pointer to new dog
  */
-
 dog_t *new_dog(char *name, float age, char *owner)
 {
-	dog_t *n_dog;
-	int nameLen, ownerLen;
+	unsigned int nl, ol, i;
+	dog_t *dog;
 
-	n_dog = malloc(sizeof(dog_t));
-
-	if (n_dog == NULL)
+	if (name == NULL || owner == NULL)
 		return (NULL);
-
-	nameLen = _strLen(name);
-	n_dog->name = malloc(sizeof(char) * nameLen + 1);
-
-	if (n_dog->name == NULL)
+	dog = malloc(sizeof(dog_t));
+	if (dog == NULL)
+		return (NULL);
+	for (nl = 0; name[nl]; nl++)
+		;
+	nl++;
+	dog->name = malloc(nl * sizeof(char));
+	if (dog->name == NULL)
 	{
-		free(n_dog);
+		free(dog);
 		return (NULL);
 	}
-
-	fillMem(name, nameLen, n_dog->name);
-
-	ownerLen = _strLen(owner);
-	n_dog->owner = malloc(sizeof(char) * ownerLen + 1);
-
-	if (n_dog->owner == NULL)
+	for (i = 0; i < nl; i++)
+		dog->name[i] = name[i];
+	dog->age = age;
+	for (ol = 0; owner[ol]; ol++)
+		;
+	ol++;
+	dog->owner = malloc(ol * sizeof(char));
+	if (dog->owner == NULL)
 	{
-		free(n_dog);
-		free(n_dog->name);
+		free(dog->name);
+		free(dog);
 		return (NULL);
 	}
-
-	fillMem(owner, ownerLen, n_dog->owner);
-
-	n_dog->age = age;
-
-	return (n_dog);
+	for (i = 0; i < ol; i++)
+		dog->owner[i] = owner[i];
+	return (dog);
 }
-
-/**
- * _strLen - Get length of a string
- *
- * @str: A string
- *
- * Return: Length of string
- */
-
-
