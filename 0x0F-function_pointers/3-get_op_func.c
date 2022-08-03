@@ -1,11 +1,32 @@
-#include <stdio.h>
+#include "3-calc.h"
+#include <stdlib.h>
+#include <string.h>
 
-#ifndef FUNCTION_POINTERS_
-#define FUNCTION_POINTERS_
+/**
+  * get_op_func - ...
+  * @s: ...
+  *
+  * Return: ...
+  */
+int (*get_op_func(char *s))(int, int)
+{
+	op_t ops[] = {
+	{ "+", op_add },
+	{ "-", op_sub },
+	{ "*", op_mul },
+	{ "/", op_div },
+	{ "%", op_mod },
+	{ NULL, NULL }
+	};
+	int i = 0;
 
-void print_name(char *name, void (*f)(char *));
-void array_iterator(int *array, size_t size, void (*action)(int));
-int int_index(int *array, int size, int (*cmp)(int));
+	while (i < 5)
+	{
+		if (strcmp(s, ops[i].op) == 0)
+			return (ops[i].f);
 
-#endif /* #ifndef FUNCTION_POINTERS_ */
+		i++;
+	}
 
+	return (0);
+}
